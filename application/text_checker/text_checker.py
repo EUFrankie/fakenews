@@ -1,9 +1,8 @@
 from flask import Blueprint
 
-text_bp = Blueprint("text_bp", __name__)
+text_bp = Blueprint("text_bp", __name__, template_folder="templates")
 
 
-@text_bp.route("/")
+@text_bp.route("/search")
 def check_text():
-    pass
-
+    return "this worked"

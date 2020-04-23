@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+
+{% block main %}
+
+<div class="row mt-5 justify-content-center">
+    <div class="col">
+        <form action="{{url_for('text_bp.check_text')}}">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Enter your text">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
