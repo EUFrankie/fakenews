@@ -1,6 +1,7 @@
 from flask import Flask
 from config import Config
 
+
 def create_app():
 
     # create the base app object
@@ -17,6 +18,11 @@ def create_app():
 
     with app.app_context():
         # include the main routes
-
+        from .homepage.homepage import home_bp
+        from .text_checker.text_checker import text_bp
 
         # register blueprints
+        app.register_blueprint(home_bp)
+        app.register_blueprint(text_bp)
+
+        return app
