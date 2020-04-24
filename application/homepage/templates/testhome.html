@@ -8,16 +8,16 @@
         <h1>First search function </h1>
         <form action="{{url_for('text_bp.check_text')}}" method="post">
             <div class="form-group">
-                <input type="text" name="input" class="form-control" placeholder="Enter your text">
+                <input type="text" name="user_input" class="form-control" placeholder="Enter your text">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
     <div class="col border ml-5">
         <h1>Second search function </h1>
-        <form action="{{url_for('text_bp.check_text3')}}" method="get">
+        <form action="{{url_for('text_bp.check_text')}}" method="get">
             <div class="form-group">
-                <input type="text" name="input" class="form-control" placeholder="Enter your text">
+                <input type="text" name="user_input" class="form-control" placeholder="Enter your text">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
