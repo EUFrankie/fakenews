@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from application.text_checker.quick_solution_fuzzywuzzy import checker
+from application.text_checker.quick_solution_fuzzywuzzy import basic_checker, checker
 
 text_bp = Blueprint("text_bp", __name__, template_folder="templates")
 
@@ -10,18 +10,16 @@ def check_text():
         if not request.args.get("user_input"):
             return "input was false"
         else:
-            text, score = checker(request.args.get("user_input"))
-            return text + " with a score of " + str(score)
+            response = checker(request.args.get("user_input"))
+            return response
     else:
-        text, score = checker(request.form.get("user_input"))
-        return text + " with a score of " + str(score)
+        response = checker(request.form.get("user_input"))
+        return response
 
 
 @text_bp.route("/search2/<user_input>", methods=["GET", "POST"])
 def check_text2(user_input):
-    print(user_input)
     if user_input:
-        text, score = checker(user_input)
-        print(text, score)
-        return text + " with a score of " + str(score)
+        response = checker(user_input)
+        return response
     return "didnt work"
