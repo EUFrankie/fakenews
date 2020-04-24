@@ -18,4 +18,4 @@ EXPOSE 5000
 
 ENTRYPOINT ["python3"]
 
-CMD gunicorn app:wsgi --bind 0.0.0.0:$PORT --reload
+CMD ["wsgi.py"]
