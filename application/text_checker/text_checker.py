@@ -6,6 +6,7 @@ text_bp = Blueprint("text_bp", __name__, template_folder="templates")
 
 @text_bp.route("/search1", methods=["GET", "POST"])
 def check_text():
+    print(request.is_json())
     print("is this executed?")
     if not request.form.get("user_input"):
         if not request.args.get("user_input"):
@@ -47,8 +48,6 @@ def check_text3():
         for item in sentences:
             output.append(checker(item))
 
-        return "it is not none" \
-               "with sentences {}" \
-               "and output {}".format(sentences, output)
+        return jsonify(output)
 
     return "didnt work"

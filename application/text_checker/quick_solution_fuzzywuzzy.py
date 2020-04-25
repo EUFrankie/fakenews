@@ -42,7 +42,7 @@ def checker(input_text, path="rel"):
         "score":  score
     }
 
-    return json.dumps(json_format)
+    return json_format
 
 
 def checker_test(input_text, path="rel"):
