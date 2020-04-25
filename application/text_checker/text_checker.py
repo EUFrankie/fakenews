@@ -17,7 +17,7 @@ def check_text():
                     output.append(checker(item))
                 return {"output": output}
             elif isinstance(input, str):
-                output = checker(request.args.get("user_input"))
+                output = checker(input)
                 return {"output": output}
             else:
                 return {"output": None}
