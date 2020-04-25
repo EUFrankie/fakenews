@@ -64,14 +64,16 @@
             </div>
             <div id="search_part" class="row justify-content-left mt-5">
                 <div class="col border text-left"><!-- the search part -->
-                        <div class="row">
+                    <form action="{{url_for('text_bp.check_text')}}" method="post">
+                        <div class="row ">
                             <div class="col-5">
-                                <input id="user_input" type="text" name="user_input"  class="form-control rounded-pill" placeholder="Enter your statement" required>
+                                <input type="text" name="user_input"  class="form-control rounded-pill" placeholder="Enter your statement" required>
                             </div>
                             <div class="col-2">
-                                <button type="submit" onclick="Checker()" class="btn btn-primary rounded-pill">Try it out</button>
+                                <button type="submit" class="btn btn-primary rounded-pill">Try it out</button>
                             </div>
                         </div>
+                    </form>
                 </div>
             </div>
     <div id="results_part" class="row mt-5 border justify-content-center">
@@ -86,7 +88,6 @@
                     <div  class="carousel-item active">
                         <img height="300"  src="{{ url_for('static', filename = 'logoplaceholder.jpg') }}" class="d-block w-100">
                         <div class="carousel-caption d-none d-md-block">
-
                             <h5>First slide label</h5>
                             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                         </div>
@@ -175,18 +176,5 @@
             {% endfor %}
         </div>
     </div>
-
-    <script>
-        function Checker(){
-            var user_input = document.getElementById("user_input").value;
-            alert(user_input);
-            var output;
-            $.get("{{ url_for('text_bp.check_text') }}", {"user_input": user_input}, function(data){
-                alert("we got here");
-                output = data["output"];
-                alert(output);
-            })
-        }
-    </script>
 
 {% endblock %}
