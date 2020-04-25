@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from application.text_checker.quick_solution_fuzzywuzzy import basic_checker, checker
 
 text_bp = Blueprint("text_bp", __name__, template_folder="templates")
@@ -44,8 +44,6 @@ def check_text3():
         for item in sentences:
             output.append(checker(item))
 
-        return "it is not none" \
-               "with sentences {}" \
-               "and output {}".format(sentences, output)
+        return jsonify(output)
 
     return "didnt work"
