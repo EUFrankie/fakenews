@@ -75,29 +75,67 @@ $( document ).ready(function() {
   iframe.id = "frankieFrame";
   document.body.appendChild(iframe);
 
-  function popup(){
-    console.log("called");
-      if(iframe.style.width == "0px"){
+  function openFrankie() {
+    const id_split = $(this).attr('id').split("_");
+    const title_id = parseInt(id_split[id_split.length - 1]);
+    console.log(title_id);
+    chrome.runtime.sendMessage({open_title_n: title_id}, function(response){
+      if (response.success) {
         iframe.style.width="400px";
       }
-      else{
-        iframe.style.width="0px";
-      }
+    });
   }
 
-  chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    if (request.close_frankie == true){
-      console.log("close window received");
-      popup();
-    }
-  });
+  function closePopup(){
+    console.log("close called");
+    iframe.style.width="0px";
+  }
 
-  function ask_frankie(match) {
-    
+  function addButtonsToPage(frankie_response, matches, nodes)
+  {
+    if (frankie_response.length != matches.length || nodes.length != frankie_response.length)
+    {
+      console.log("Error frankie response =! matches length");
+      return;
+    }
+    for (let i = 0; i < matches.length; i++) {
+      const match = matches[i];
+      const repl = frankie_response[i];
+      let node = nodes[i];
+      console.log(match);
+      console.log(repl);
+      if (parseInt(repl.score) > 80) {
+        const img_src = chrome.runtime.getURL("images/get_started16.png");
+        const btn_id = "frankie_btn_" + i;
+        $(node).parent().prepend(`
+        <span>
+          <button id="` + btn_id + `" type="button" class="btn btn-secondary btn-sm news_trigger">
+            <img src="` + img_src + `"></img>
+          </button>  
+        </span>
+        `);
+      }
+    }
+    $(".news_trigger").on("click", openFrankie);
   }
 
   let matches = [];
+  let nodes = [];
+
+  chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if (typeof request.close_frankie !== 'undefined' && request.close_frankie == true){
+        console.log("close window received");
+        closePopup();
+      }
+
+      if (typeof request.frankie_response !== 'undefined' && request.frankie_response.length > 0){
+        console.log(request.frankie_response);
+        addButtonsToPage(request.frankie_response, matches, nodes);
+      }
+    }
+  );
+  
   for (let i=0; i < all_nodes.length; i++)
   {
     if (node_is_relevant(all_nodes[i]))
@@ -105,24 +143,12 @@ $( document ).ready(function() {
       let match = $(all_nodes[i]).text();
       match = match.replace(/ +(?= )/g,'');
       matches.push(match);
-      console.log(match);
-      let img_src = chrome.runtime.getURL("images/get_started16.png");
-      let button_src = chrome.runtime.getURL("popup.html");
-      // $.get(button_src, function(data){
-      //   $(all_nodes[i]).parent().prepend(data);
-      // });
-      $(all_nodes[i]).parent().prepend(`
-      <span>
-        <button type="button" class="btn btn-secondary btn-sm news_trigger">
-          <img id="button_logo">Test</img>
-        </button>  
-      </span>
-      `);
+      nodes.push(all_nodes[i]);
     }
   }
 
-  $(".news_trigger").on("click", popup);
+  chrome.runtime.sendMessage({matches: matches});
 
-  chrome.runtime.sendMessage({number_matches: matches.length});
+  // ask_frankie(matches);
 
 });
