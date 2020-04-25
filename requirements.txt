@@ -1,1 +1,15 @@
-Flask~=1.1.2
+click
+Flask
+fuzzywuzzy
+itsdangerous
+Jinja2
+MarkupSafe
+numpy
+pandas
+python-dateutil
+python-Levenshtein
+pytz
+six
+Werkzeug
+xlrd
+gunicorn
