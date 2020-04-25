@@ -9,6 +9,13 @@ chrome.runtime.onInstalled.addListener(function() {
       console.log(sender.tab ?
                   "from a content script:" + sender.tab.url :
                   "from the extension");
+      if (request.close_frankie == true)
+      {
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+          chrome.tabs.sendMessage(tabs[0].id, {close_frankie: true});
+        });
+        console.log("Please Close Frankie")
+      }            
       if (request.number_matches > 0)
       {
         console.log(request.number_matches.toString());
