@@ -10,8 +10,17 @@ def check_text():
         if not request.args.get("user_input"):
             return "input was false"
         else:
-            response = checker(request.args.get("user_input"))
-            return response
+            input = request.args.get("user_input")
+            if isinstance(input, list):
+                output = []
+                for item in input:
+                    output.append(checker(item))
+                return {"output": output}
+            elif isinstance(input, str):
+                output = checker(request.args.get("user_input"))
+                return {"output": output}
+            else:
+                return {"output": None}
     else:
         response = checker(request.form.get("user_input"))
         return response
@@ -22,4 +31,21 @@ def check_text2(user_input):
     if user_input:
         response = checker(user_input)
         return response
+    return "didnt work"
+
+
+@text_bp.route("/search_json", methods=["GET", "POST"])
+def check_text3():
+    if request.get_json():
+        input = request.get_json()
+        sentences = input["sentences"]
+
+        output = []
+        for item in sentences:
+            output.append(checker(item))
+
+        return "it is not none" \
+               "with sentences {}" \
+               "and output {}".format(sentences, output)
+
     return "didnt work"

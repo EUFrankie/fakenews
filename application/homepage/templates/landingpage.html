@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %} Landingpage {% endblock %}
+
+{% block main %}
+    <div id="first_part" class="row mt-3"></div>
+        <div class="col">
+            <img height="189" width="189" src="{{ url_for('static', filename = 'logoplaceholder.jpg') }}" class="rounded-circle">
+            <h1> Frankie </h1>
+            <h2> Finding disinformation </h2>
+        </div>
+    <div id="search_part" class="row mt-3"></div>
+        <div class="col"><!-- the search part -->
+            <form action="{{url_for('text_bp.check_text')}}" method="post">
+                <div class="form-group">
+                    <input type="text" name="user_input" class="form-control rounded-pill" placeholder="Enter your text">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col"><!-- the response part -->
+            <div></div>
+        </div>
+    <div id="video_part" class="row mt-3"> <!-- the video part -->
+        <div class="col-6">
+            <h1> How it works </h1>
+            <div class="embed-responsive embed-responsive-16by9 ">
+                <iframe src="https://www.youtube.com/embed/8h7J8MZkpnw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
