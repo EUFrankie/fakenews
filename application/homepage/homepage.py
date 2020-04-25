@@ -12,3 +12,8 @@ def home():
 @home_bp.route("/testing")
 def testing():
     return render_template("testhome.html")
+
+
+@home_bp.route("/test")
+def test():
+    return render_template("landingpage_testing.html")
