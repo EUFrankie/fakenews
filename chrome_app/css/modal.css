@@ -1,5 +1,5 @@
 body {
-  background-color: transparent;
+  background: #1e5880;
 }
 #claim_title {
   margin-bottom: 0;
@@ -10,4 +10,17 @@ body {
 
 .modal-body {
   padding-top: 0;
+}
+
+h1 {
+    font-family: 'Work Sans', sans-serif;
+    letter-spacing: 0px;
+    color: #F25B43;
+}
+
+p1 {
+    font-family: 'Roboto', sans-serif;
+    font: 20px/25px Roboto ;
+    letter-spacing: 0px;
+    color: #1E5880;
 }

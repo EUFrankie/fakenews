@@ -112,11 +112,11 @@ $( document ).ready(function() {
       console.log(match);
       console.log(repl);
       if (parseInt(repl.score) > score) {
-        const img_src = chrome.runtime.getURL("images/get_started16.png");
+        const img_src = chrome.runtime.getURL("images/unreliable32.png");
         const btn_id = "frankie_btn_" + i;
         $(node).parent().prepend(`
         <span>
-          <button id="` + btn_id + `" type="button" class="btn btn-secondary btn-sm news_trigger">
+          <button id="` + btn_id + `" type="button" class="btn btn-default news_trigger" aria-hidden="true">
             <img src="` + img_src + `"></img>
           </button>  
         </span>

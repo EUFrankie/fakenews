@@ -8,8 +8,9 @@ home_bp = Blueprint("home_bp", __name__, template_folder="templates", static_fol
 def home():
     team = ["dani", "elsa", "esther", "jan", "maurits", "myriam", "soutrik"]
     sources = {}
+
     for item in team:
-        sources.update({item.capitalize(): f'team/{item}.png'})
+        sources.update({item.capitalize(): 'team/{0}.png'.format(item)})
     return render_template("landingpage.html", team=sources)
 
 
