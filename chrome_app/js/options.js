@@ -11,12 +11,12 @@ function constructOptions() {
 
   chrome.storage.sync.get(['scale'], function(result) {
     scale.value = result.scale;
-    console.log('Scale currently is ' + result.key);
+    console.log('Score currently is ' + result.key);
   });
 
   button.addEventListener('click', function() {
     chrome.storage.sync.set({scale: scale.value}, function() {
-      console.log('scale is ' + scale.value);
+      console.log('score is ' + scale.value);
     })
   });
   page.appendChild(scale);
