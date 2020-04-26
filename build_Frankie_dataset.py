@@ -1,5 +1,6 @@
 # importing packages
 
+import os
 import requests
 from bs4 import BeautifulSoup
 import time
@@ -109,7 +110,11 @@ def build_csv(list_news_urls):
 
     return df
 
+# create folder data to save output if it does not exist
 
+if not os.path.exists("./data/"):
+        os.mkdir("./data/")
+    
 # url from poynter
 
 main_url = "https://www.poynter.org/ifcn-covid-19-misinformation/?orderby=views&order=DESC#038;order=DESC"
