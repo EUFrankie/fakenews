@@ -3,4 +3,3 @@ env/
 __pycache__/
 node_modules/
 *.pyc
-data/data_poynter_2020-04-24.csv
