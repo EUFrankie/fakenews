@@ -69,6 +69,7 @@ def checker_options(input_text, path="rel"):
             "label": relevant_row["label"].iloc[0],
             "title": relevant_row["title"].iloc[0],
             "explanation": relevant_row["explanation"].iloc[0],
+            "url_checker": relevant_row["url_checker"].iloc[0],
             "score": item[1]
         })
     return output_list

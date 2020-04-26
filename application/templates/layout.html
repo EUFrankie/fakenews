@@ -14,6 +14,11 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
         <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
 
+
+        <!-- embedding google fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
         <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
         <link href="/static/favicon.ico" rel="icon">
 
@@ -42,26 +47,6 @@
 
     <body>
 
-        <nav class="navbar navbar-expand-md navbar-light bg-light border">
-            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar">
-                    <ul class="navbar-nav ml-auto mt-2">
-                        <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="navbar-toggler-icon"></span>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </ul>
-            </div>
-        </nav>
-
         {% if get_flashed_messages() %}
             <header>
                 <div id="msg" class="alert alert-primary border text-center" role="alert">
@@ -74,8 +59,10 @@
 
         {% endif %}
 
-        <main class="container">
-            {% block main %}{% endblock %}
+        <main class="container-fluid ">
+            <div class="container">
+                {% block main %}{% endblock %}
+            </div>
         </main>
 
         <footer class="small text-center text-muted">

@@ -9,7 +9,7 @@ text_bp = Blueprint("text_bp", __name__, template_folder="templates")
 def check_text():
     if not request.form.get("user_input"):
         if not request.args.get("user_input"):
-            return "input was false"
+            return jsonify({"output": None})
         else:
             input = request.args.get("user_input")
             if isinstance(input, list):

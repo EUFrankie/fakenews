@@ -37,10 +37,82 @@ main img
 }
 
 body {
-  background: url("background2.jpg");
-  color: #333333;
+  /* background: url("background2.jpg"); */
+    background: #1e5880;
+    color: #333333;
+    padding: 15px;
 }
 
-.button {
-    background-color: #1E5880;
+.btn-primary {
+    background: #1e5880;
+}
+
+.form-control {
+    background: #1e588080 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+h1 {
+    font-family: 'Work Sans', sans-serif;
+    letter-spacing: 0px;
+    color: #F25B43;
+}
+
+p1 {
+    font-family: 'Roboto', sans-serif;
+    font: 20px/25px Roboto ;
+    letter-spacing: 0px;
+    color: #1E5880;
+}
+
+th, tr {
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+}
+
+.blue {
+    color: #1E5880;
+}
+
+.input {
+    background: #1e588080;
+    opacity: 1;
+}
+
+.carousel {
+    border-radius: 25px;
+}
+
+.d-block {
+    border-radius: 31px;
+    height: 300px;
+    vertical-align: text-top;
+}
+
+.d-none{
+    vertical-align: text-top;
+    vertical-align: top;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+}
+
+.carousel-inner {
+    position: relative;
+    max-height: 600px;
+}
+
+.container-fluid {
+    border-radius: 31px;
+    background-color: #f7f7f7;
+}
+
+.links {
+    font-family: 'Roboto', sans-serif;
+    color: #00cd78;
+    font: 20px/25px Roboto ;
+
 }
