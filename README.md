@@ -40,7 +40,7 @@ python wsgi.py
 
 # Data Resources
 
-Complete dataset cannot be distributed because of news publisher copy rights. Use `build_Frankie_dataset.py` to obtain the dataset.
+Complete dataset cannot be distributed because of news publisher copy rights. Use `build_Frankie_dataset.py` to obtain dataset.
 
 To obtain dataset run: 
 ```bash 
