@@ -18,8 +18,8 @@ def basic_checker(input_text, path="rel"):
 
 
 def checker(input_text, path="rel"):
-    absolute_path = "C:/personal projects/fakenews/data/data_poynter_COMPLETE_2020-04-24.csv"
-    relative_path = "data/data_poynter_COMPLETE_2020-04-24.csv"
+    absolute_path = "C:/personal projects/fakenews/data/data_poynter_COMPLETE_without_cleaning_2020-04-25.csv"
+    relative_path = "data/data_poynter_COMPLETE_without_cleaning_2020-04-25.csv"
 
     if path == "rel":
         df = pd.read_csv(relative_path)
@@ -66,8 +66,8 @@ def checker(input_text, path="rel"):
 
 
 def checker_test(input_text, path="rel"):
-    absolute_path = "C:/personal projects/fakenews/data/data_poynter_2020-04-24.csv"
-    relative_path = "data/data_poynter_2020-04-24.csv"
+    absolute_path = "C:/personal projects/fakenews/data/data_poynter_COMPLETE_without_cleaning_2020-04-25.csv"
+    relative_path = "data/data_poynter_COMPLETE_without_cleaning_2020-04-25.csv"
 
     if path == "rel":
         df = pd.read_csv(relative_path)
