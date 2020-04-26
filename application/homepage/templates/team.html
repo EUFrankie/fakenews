@@ -4,23 +4,25 @@
 
 {% block main %}
 <div class="row">
+    {% for item in information %}
     <div id="jan" class="col-3">
         <div class="row">
-            <div class="col">
-                <img src="">
+            <div class="col-8">
+                <img src="{{ url_for('static', filename=information[item]['image'] ) }}">
             </div>
-            <div class="col">
-                <img src="{{ url_for('static', filename='buttons/twitter.png') }}">
-                <img src="{{ url_for('static', filename='buttons/twitter.png') }}">
+            <div class="col-3">
+                <a width="15" height="15" href="{{ information[item]['linkedin'] }}"><img src="{{ url_for('static', filename='buttons/linkedin.png') }}"></a>
+                <a width="15" height="15" href="{{ information[item]['twitter'] }}"><img src="{{ url_for('static', filename='buttons/twitter.png') }}"></a>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h1>Jan</h1>
-                <p1>Some text</p1>
+                <h1>{{item}}</h1>
+                <p1>{{ information[item]['text'] }}</p1>
             </div>
         </div>
     </div>
+    {% endfor %}
 </div>
 
 {% endblock %}
