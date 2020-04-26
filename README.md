@@ -62,7 +62,7 @@ The features in the dataset are the following:
 + **title:** Headline of the fact.
 + **explanation:** Explanation of the raking given.
 + **claim_originated_by:** Who claimed the fact.
-+ **url:** URL for the full article of the fact checker about fact check.
++ **url_checker:** URL for the full article of the fact checker about fact check.
 
 # Models and Results:
 \
