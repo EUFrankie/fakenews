@@ -42,7 +42,6 @@ def checker(input_text, path="rel"):
 
     relevant_row = df[df["title"] == text]
 
-<<<<<<< HEAD
     json_format = {
         "fact_checker": relevant_row["fact_checker"].iloc[0],
         "date": relevant_row["date"].iloc[0],
@@ -52,7 +51,7 @@ def checker(input_text, path="rel"):
         "explanation": relevant_row["explanation"].iloc[0],
         "score": score
     }
-=======
+
     if relevant_row.shape[0] > 0:
         json_format = {
             "fact_checker": relevant_row["fact_checker"].iloc[0],
@@ -73,14 +72,13 @@ def checker(input_text, path="rel"):
             "explanation": " ",
             "score":  0
         }
->>>>>>> 2faebd426248d693f882603cf6cce00c66da3246
 
     return json_format
 
 
 def checker_options(input_text, path="rel"):
-    absolute_path = "C:/personal projects/fakenews/data/data_poynter_COMPLETE_2020-04-24.csv"
-    relative_path = "data/data_poynter_COMPLETE_2020-04-24.csv"
+    absolute_path = "C:/personal projects/fakenews/data/data_poynter_COMPLETE_without_cleaning_2020-04-25.csv"
+    relative_path = "data/data_poynter_COMPLETE_without_cleaning_2020-04-25.csv"
 
     if path == "rel":
         df = pd.read_csv(relative_path)

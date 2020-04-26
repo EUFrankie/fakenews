@@ -34,5 +34,5 @@ def api_doc():
 
 
 @home_bp.route("/team")
-def api_doc():
+def team():
     return render_template("team.html")
