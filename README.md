@@ -41,8 +41,7 @@ python wsgi.py
 # Data resources and visualization
 update with visualization of poynter data
 
-To obtain dataset: 
-Run 
+To obtain dataset run: 
 ```bash 
 python build_Frankie_dataset.py
 ``` 
