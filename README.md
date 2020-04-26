@@ -1,4 +1,4 @@
-# fakenews detector (Frankie)
+# Fakenews Detector (Frankie)
 Disinformation are spreading like wildfire in Europe, for political or commercial manipulation, hampering efforts to contain the pandemic, and ripping apart our society’s social fabric. Lives literally depend on all of us listening to health authorities and our ability to access, rely and trust reliable information. Yet more and more European citizens find themselves unable to do so.\
 \
 Many technical approaches against the spread of fake news either rely entirely on human fact-checks or entirely on AI. We want to combine the accuracy and pluralism of fact-checks from trusted journalists with the scalability machine based validation.\
@@ -38,7 +38,7 @@ python wsgi.py
   * Optional: Adapt score threshold by clicking on Details -> Extension options
   * Have fun with Frankie (e.g. test it on https://www.poynter.org/?ifcn_misinformation=coronavirus-was-created-from-hiv)
 
-# Data resources and visualization
+# Data Resources
 
 Complete dataset cannot be distributed because of news publisher copy rights. Use `build_Frankie_dataset.py` to obtain the dataset.
 
@@ -48,7 +48,7 @@ python build_Frankie_dataset.py
 ``` 
 within directory where .py file is located.
 
-## Description of the dataset:
+## Description of the Dataset:
 
 The dataset consists of **4623 fact checks** in the period from **January 14, 2020** until **April 23, 2020**.
 It includes **90** unique fact-checkers, **170** unique countries, and **38** unique ratings (labels).
@@ -64,7 +64,7 @@ The features in the dataset are the following:
 + **claim_originated_by:** Who claimed the fact.
 + **url:** URL for the full article of the fact checker about fact check.
 
-# Models and results:
+# Models and Results:
 \
 \
 \
