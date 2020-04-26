@@ -8,6 +8,9 @@ chrome.runtime.onMessage.addListener(
       $("#claim_title").html(request.match.title);
       $("#claim_score").html(request.match.score);
       $("#claim_explanation").html(request.match.explanation);
+      $("#claim_url").html(request.match.url_checker);
+      console.log(request.match.url_checker);
+      $("#modal").append(`<a href="${request.match.url_checker}" class="link_fact_check btn btn-success" aria-label="More">More</a>`);
     }
   }
 );

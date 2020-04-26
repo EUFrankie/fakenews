@@ -3,9 +3,21 @@
 {% block title %} Landingpage {% endblock %}
 
 {% block main %}
-    <div id="logo" class="row pt-5 mb-5">
+    <div id="logo" class="row pt-5 mb-5 justify-content-between">
         <div class="col-4 mb-5">
-            <img src="{{ url_for('static', filename = 'logo.png') }}">
+            <img src="{{ url_for('static', filename = 'frankie_logo.png') }}">
+        </div>
+        <div class="col-4 d-flex flex-row-reverse align-items-center">
+            <div class="dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img height="15" width="15" src="{{ url_for('static', filename = 'hambutton-16.png') }}">
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#team">Our team</a>
+                <a class="dropdown-item" href="{{url_for('home_bp.api_doc')}}">Our API</a>
+                <a class="dropdown-item" href="#video_part">How it works</a>
+              </div>
+            </div>
         </div>
     </div>
     <div id="search_bar" class="row justify-content-center mt-5 mb-5">
@@ -192,11 +204,11 @@
     </div>
     <div id="link_to_api" class="row mt-5 mb-5 justify-content-end">
         <div class="col-4 text-right">
-            <a href="{{ url_for('home_bp.api_doc')+}}"><span class="links"> Add Frankie to your app </span><br><span class="links"> and find out how we did it...</span> </a>
+            <a href="{{ url_for('home_bp.api_doc')}}"><span class="links"> Add Frankie to your app </span><br><span class="links"> and find out how we did it...</span> </a>
         </div>
     </div>
 
-    <div class="row">
+    <div id="team" class="row">
         <div class="col">
             <h1>Frankie´s team</h1>
         </div>
