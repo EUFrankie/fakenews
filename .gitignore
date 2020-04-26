@@ -3,4 +3,4 @@ env/
 __pycache__/
 node_modules/
 *.pyc
-data\data_poynter_COMPLETE_without_cleaning_2020-04-25.csv
+*.csv
