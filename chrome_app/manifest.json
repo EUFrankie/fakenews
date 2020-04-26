@@ -2,7 +2,8 @@
   "name": "Frankie Chrome Extension",
   "version": "1.0",
   "description": "Uses Frankie <Link> to check if a visited website contains misinformation.",
-  "permissions": ["activeTab", "declarativeContent", "storage", "*://*/*", "http://localhost:5000/*"],
+  "permissions": ["activeTab", "declarativeContent", "storage", "*://*/*", "http://localhost:5000/*",
+                    "http://eufrankie.herokuapp.com/*"],
   "options_page": "options.html",
   "background": {
     "scripts": ["js/jquery.min.js", "js/background.js"],

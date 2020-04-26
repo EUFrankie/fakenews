@@ -18,7 +18,7 @@ function ask_frankie(matches) {
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
-  postData('http://localhost:5000/search_json', in_data)
+  postData('http://eufrankie.herokuapp.com/search_json', in_data)
   .then((data) => {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {frankie_response: data});
