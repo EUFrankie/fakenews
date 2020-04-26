@@ -39,7 +39,8 @@ python wsgi.py
   * Have fun with Frankie (e.g. test it on https://www.poynter.org/?ifcn_misinformation=coronavirus-was-created-from-hiv)
 
 # Data resources and visualization
-update with visualization of poynter data
+
+Complete dataset cannot be distributed because of news publisher copy rights. Use `build_Frankie_dataset.py` to obtain the dataset.
 
 To obtain dataset run: 
 ```bash 
