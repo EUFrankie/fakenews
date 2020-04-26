@@ -1,13 +1,12 @@
 from flask import Blueprint, request, jsonify
-from application.text_checker.quick_solution_fuzzywuzzy import basic_checker, checker
+from application.text_checker.quick_solution_fuzzywuzzy import basic_checker, checker, checker_options
+import json
 
 text_bp = Blueprint("text_bp", __name__, template_folder="templates")
 
 
 @text_bp.route("/search1", methods=["GET", "POST"])
 def check_text():
-    print(request.is_json())
-    print("is this executed?")
     if not request.form.get("user_input"):
         if not request.args.get("user_input"):
             return "input was false"
@@ -16,17 +15,15 @@ def check_text():
             if isinstance(input, list):
                 output = []
                 for item in input:
-                    output.append(checker(item))
+                    output.append(checker_options(item))
                 return jsonify({"output": output})
             elif isinstance(input, str):
-                print("we got to the str part")
-                output = checker(input)
-                print({"output": output})
+                output = checker_options(input)
                 return jsonify({"output": output})
             else:
                 return jsonify({"output": None})
     else:
-        response = checker(request.form.get("user_input"))
+        response = checker_options(request.form.get("user_input"))
         return response
 
 

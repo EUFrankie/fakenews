@@ -11,8 +11,8 @@
         </div>
     </div>
     <div id="success_stories" class="row mt-3 border justify-content-center">
-        <div class="col border">
-            <div id="slider_success" class="carousel slide" data-ride="carousel">
+        <div class="col p-0">
+            <div id="slider_success" class="carousel slider" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#slide_success" data-slide-to="0" class="active"></li>
                     <li data-target="#slide_success" data-slide-to="1" ></li>
@@ -54,7 +54,7 @@
     </div>
     <div id="api-link" class="row mt-5">
         <div class="col">
-            <div class="row justify-content-left">
+            <div class="row border justify-content-left">
                 <div class="text-left ml-3">
                     <h1 >Why not ask Frankie?</h1>
                     <p1>If you have heard of something you´re not sure about,  </p1><br>
@@ -75,7 +75,7 @@
                 </div>
             </div>
     <div id="results_part" class="row mt-5 border justify-content-center">
-        <div class="col border">
+        <div class="col p-0 border">
             <div id="slider_results" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#slide_success" data-slide-to="0" class="active"></li>
@@ -84,25 +84,78 @@
                 </ol>
                 <div class="carousel-inner">
                     <div  class="carousel-item active">
-                        <img height="300"  src="{{ url_for('static', filename = 'logoplaceholder.jpg') }}" class="d-block w-100">
+                        <img height="300"  src="https://via.placeholder.com/150/0000FF/0000FF?text=''" class="d-block w-100">
                         <div class="carousel-caption d-none d-md-block">
-
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <table class="table table-responsive-sm table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>fact_checker</th>
+                                        <th>label</th>
+                                        <th>title</th>
+                                        <th>explanation</th>
+                                        <th>score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="fact_checker0"></td>
+                                        <td id="label0"></td>
+                                        <td id="title0"></td>
+                                        <td id="explanation0"></td>
+                                        <td id="score0"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img height="300"  src="{{ url_for('static', filename = 'logoplaceholder.jpg') }}" class="d-block w-100">
+                        <img height="300"  src="https://via.placeholder.com/150/0000FF/0000FF?text=''" class="d-block w-100">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <table class="table table-responsive-sm table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>fact_checker</th>
+                                        <th>label</th>
+                                        <th>title</th>
+                                        <th>explanation</th>
+                                        <th>score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="fact_checker1"></td>
+                                        <td id="label1"></td>
+                                        <td id="title1"></td>
+                                        <td id="explanation1"></td>
+                                        <td id="score1"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img height="300"  src="{{ url_for('static', filename = 'logoplaceholder.jpg') }}" class="d-block w-100">
+                        <img height="300"  src="https://via.placeholder.com/150/0000FF/0000FF?text=''" class="d-block w-100">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <table class="table table-responsive-sm table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>fact_checker</th>
+                                        <th>label</th>
+                                        <th>title</th>
+                                        <th>explanation</th>
+                                        <th>score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="fact_checker2"></td>
+                                        <td id="label2"></td>
+                                        <td id="title2"></td>
+                                        <td id="explanation2"></td>
+                                        <td id="score2"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -182,9 +235,20 @@
             alert(user_input);
             var output;
             $.get("{{ url_for('text_bp.check_text') }}", {"user_input": user_input}, function(data){
-                alert("we got here");
-                output = data["output"];
-                alert(output);
+                var data_json = JSON.stringify(data);
+                var testing = JSON.parse(JSON.stringify(data));
+                for (let i = 0; i < 3; i++){
+                    var factchecker = 'fact_checker'+i;
+                    var label = 'label'+i;
+                    var title = 'title'+i;
+                    var explanation = 'explanation'+i;
+                    var score = 'score'+i;
+                    document.getElementById(factchecker).innerHTML=data["output"][i]["fact_checker"];
+                    document.getElementById(label).innerHTML=data["output"][i]["label"];
+                    document.getElementById(title).innerHTML=data["output"][i]["title"];
+                    document.getElementById(explanation).innerHTML=data["output"][i]["explanation"];
+                    document.getElementById(score).innerHTML=data["output"][i]["score"];
+                }
             })
         }
     </script>
