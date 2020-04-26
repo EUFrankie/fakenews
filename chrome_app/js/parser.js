@@ -65,7 +65,7 @@ $( document ).ready(function() {
   var iframe = document.createElement('iframe'); 
   iframe.style.background = "transparent";
   iframe.allowTransparency = "true";
-  iframe.style.height = "450px";
+  iframe.style.height = "650px";
   iframe.style.width = "0px";
   iframe.style.position = "fixed";
   iframe.style.top = "0%";
