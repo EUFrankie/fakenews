@@ -1,3 +1,13 @@
 body {
-  background-color: lightblue;
+  background-color: transparent;
+}
+#claim_title {
+  margin-bottom: 0;
+}
+#claim_explanation {
+  margin-bottom: 0;
+}
+
+.modal-body {
+  padding-top: 0;
 }

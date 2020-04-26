@@ -26,21 +26,41 @@ def checker(input_text, path="rel"):
     elif path == "abs":
         df = pd.read_csv(absolute_path)
 
+    def filter_titles(title):
+        number_title_words = len(title.split())
+        if number_title_words >= 4:
+            return True
+        else:
+            return False
+
+    df = df[df.title.apply(filter_titles)]
+
     our_titles = df["title"].values
 
     text, score = process.extractOne(input_text, our_titles, scorer=fuzz.token_set_ratio)
 
     relevant_row = df[df["title"] == text]
 
-    json_format = {
-        "fact_checker": relevant_row["fact_checker"].iloc[0],
-        "date": relevant_row["date"].iloc[0],
-        "location": relevant_row["location"].iloc[0],
-        "label": relevant_row["label"].iloc[0],
-        "title": relevant_row["title"].iloc[0],
-        "explanation": relevant_row["explanation"].iloc[0],
-        "score":  score
-    }
+    if relevant_row.shape[0] > 0:
+        json_format = {
+            "fact_checker": relevant_row["fact_checker"].iloc[0],
+            "date": relevant_row["date"].iloc[0],
+            "location": relevant_row["location"].iloc[0],
+            "label": relevant_row["label"].iloc[0],
+            "title": relevant_row["title"].iloc[0],
+            "explanation": relevant_row["explanation"].iloc[0],
+            "score":  score
+        }
+    else:
+        json_format = {
+            "fact_checker": " ",
+            "date": " ",
+            "location": " ",
+            "label": " ",
+            "title": " ",
+            "explanation": " ",
+            "score":  0
+        }
 
     return json_format
 
