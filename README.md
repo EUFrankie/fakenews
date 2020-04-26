@@ -40,6 +40,30 @@ python wsgi.py
 
 # Data resources and visualization
 update with visualization of poynter data
+
+To obtain dataset: 
+Run 
+```bash 
+python build_Frankie_dataset.py
+``` 
+within directory where .py file is located.
+
+## Description of the dataset:
+
+The dataset consists of **4623 fact checks** in the period from **January 14, 2020** until **April 23, 2020**.
+It includes **90** unique fact-checkers, **170** unique countries, and **38** unique ratings (labels).
+
+The features in the dataset are the following:
+
++ **fact_checker:** Agency that checked the fact.
++ **date:** Date when it was published in Poynter.
++ **location:** Which country(ies) the fact check was primary originated.
++ **label:** How fact was rated by the fact-checker.
++ **title:** Headline of the fact.
++ **explanation:** Explanation of the raking given.
++ **claim_originated_by:** Who claimed the fact.
++ **url:** URL for the full article of the fact checker about fact check.
+
 # Models and results:
 \
 \
