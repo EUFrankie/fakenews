@@ -6,6 +6,8 @@ chrome.runtime.onMessage.addListener(
       console.log(request.match);
       $("#fact_checker_name").html(request.match.fact_checker);
       $("#claim_title").html(request.match.title);
+      $("#claim_score").html(request.match.score);
+      $("#claim_explanation").html(request.match.explanation);
     }
   }
 );

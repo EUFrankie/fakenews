@@ -63,8 +63,9 @@ $( document ).ready(function() {
   
   // Add modal to page
   var iframe = document.createElement('iframe'); 
-  iframe.style.background = "green";
-  iframe.style.height = "240px";
+  iframe.style.background = "transparent";
+  iframe.allowTransparency = "true";
+  iframe.style.height = "450px";
   iframe.style.width = "0px";
   iframe.style.position = "fixed";
   iframe.style.top = "0%";
@@ -91,6 +92,12 @@ $( document ).ready(function() {
     iframe.style.width="0px";
   }
 
+  let score = 80;
+  chrome.storage.sync.get(['scale'], function(result) {
+    score = result.scale;
+    console.log('Score currently is ' + result.scale);
+  });
+
   function addButtonsToPage(frankie_response, matches, nodes)
   {
     if (frankie_response.length != matches.length || nodes.length != frankie_response.length)
@@ -104,7 +111,7 @@ $( document ).ready(function() {
       let node = nodes[i];
       console.log(match);
       console.log(repl);
-      if (parseInt(repl.score) > 80) {
+      if (parseInt(repl.score) > score) {
         const img_src = chrome.runtime.getURL("images/get_started16.png");
         const btn_id = "frankie_btn_" + i;
         $(node).parent().prepend(`
