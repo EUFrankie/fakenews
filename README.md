@@ -15,7 +15,7 @@ We provide multiple Interfaces for users to interact with our system. For this H
 3. A public API which is not only used by the previous UIs but can also be embedded into other Apps
 
 # How to run Chrome Extension and Server Locally
-Let's start with the server, assuming python3 is already installed. We highly recommend the usage of a virtual environment but the first step can also be ommitted. 
+Let's start with the server, assuming python3 is already installed.
 
 1. Setup virtualenv (if not installed yet follow these instructions: [Link](https://virtualenv.pypa.io/en/stable/installation.html))
 ```bash 
@@ -31,12 +31,12 @@ python wsgi.py
 ```
 
 3. Install Chrome Extension:
-  a. Go to you chrome browser and enter `chrome://extensions`
-  b. In the upper right corner enable the developer mode by clicking on the switch button.
-  c. Click on Load unpacked in the upper left corner
-  d. Select path/to/your/fakenews/dir/chrome_app
-  f. Optional: Adapt score threshold by clicking on Details -> Extension options
-  g. Have fun with Frankie (e.g. test it on https://www.poynter.org/?ifcn_misinformation=coronavirus-was-created-from-hiv)
+  * Go to you chrome browser and enter `chrome://extensions`
+  * In the upper right corner enable the developer mode by clicking on the switch button.
+  * Click on Load unpacked in the upper left corner
+  * Select path/to/your/fakenews/dir/chrome_app
+  * Optional: Adapt score threshold by clicking on Details -> Extension options
+  * Have fun with Frankie (e.g. test it on https://www.poynter.org/?ifcn_misinformation=coronavirus-was-created-from-hiv)
 
 # Data resources and visualization
 update with visualization of poynter data
