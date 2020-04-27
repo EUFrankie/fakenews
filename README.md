@@ -1,4 +1,4 @@
-# Fakenews Detector (Frankie)
+# Disinformation Detector (Frankie)
 Disinformation are spreading like wildfire in Europe, for political or commercial manipulation, hampering efforts to contain the pandemic, and ripping apart our society’s social fabric. Lives literally depend on all of us listening to health authorities and our ability to access, rely and trust reliable information. Yet more and more European citizens find themselves unable to do so.\
 \
 Many technical approaches against the spread of fake news either rely entirely on human fact-checks or entirely on AI. We want to combine the accuracy and pluralism of fact-checks from trusted journalists with the scalability machine based validation.\
@@ -68,5 +68,5 @@ The features in the dataset are the following:
 \
 \
 \
-\
+
 # Disclaimer: 
