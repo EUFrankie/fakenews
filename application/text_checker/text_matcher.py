@@ -16,7 +16,7 @@ def init_text_matcher():
   if encoder is None:
     encoder = FrankieSentenceEncoder(
       STSBenchmarkDatasetForEncoding,
-      weights_path="/home/jan/frankie-ai/.trained_models/frankie_encoder/ec.ckpt"
+      weights_path=".trained_models/frankie_encoder/ec.ckpt"
     )
     print("Initialized Encoder")
 

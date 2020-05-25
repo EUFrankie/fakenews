@@ -89,3 +89,4 @@ widgetsnbextension
 xlrd
 zipp
 git+git://github.com/EUFrankie/frankie-ai@v0.0.1#egg=frankie-ai
+wget==3.2
