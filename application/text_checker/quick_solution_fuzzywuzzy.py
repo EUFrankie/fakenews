@@ -1,9 +1,6 @@
 import pandas as pd
 from fuzzywuzzy import fuzz, process
-import json
 
-
-# %%
 
 
 def basic_checker(input_text, path="rel"):

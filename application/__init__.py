@@ -1,5 +1,6 @@
 from flask import Flask
 from config import Config
+from application.text_checker.text_matcher import init_text_matcher
 
 
 def create_app():
@@ -24,5 +25,8 @@ def create_app():
         # register blueprints
         app.register_blueprint(home_bp)
         app.register_blueprint(text_bp)
+
+        # Init text matcher
+        init_text_matcher()
 
         return app

@@ -3,8 +3,6 @@ astor
 attrs
 backcall
 base58
-bert-serving-client
-bert-serving-server
 bleach
 blinker
 boto3
@@ -90,4 +88,4 @@ Werkzeug
 widgetsnbextension
 xlrd
 zipp
-
+git+git://github.com/EUFrankie/frankie-ai@v0.0.1#egg=frankie-ai

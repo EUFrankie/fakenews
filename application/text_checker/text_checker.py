@@ -1,5 +1,7 @@
 from flask import Blueprint, request, jsonify
-from application.text_checker.quick_solution_fuzzywuzzy import basic_checker, checker, checker_options
+from application.text_checker.quick_solution_fuzzywuzzy import checker
+from application.text_checker.text_matcher import find_best_matches as checker_options
+
 import json
 
 text_bp = Blueprint("text_bp", __name__, template_folder="templates")
