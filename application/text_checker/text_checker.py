@@ -1,11 +1,8 @@
 from flask import Blueprint, request, jsonify
-from application.text_checker.quick_solution_fuzzywuzzy import checker
-from application.text_checker.text_matcher import find_best_matches as checker_options
-
+from application.text_checker.text_matcher import find_best_matches, find_one_best_match
 import json
 
 text_bp = Blueprint("text_bp", __name__, template_folder="templates")
-
 
 @text_bp.route("/search1", methods=["GET", "POST"])
 def check_text():
@@ -17,22 +14,22 @@ def check_text():
             if isinstance(input, list):
                 output = []
                 for item in input:
-                    output.append(checker_options(item))
+                    output.append(find_best_matches(item))
                 return jsonify({"output": output})
             elif isinstance(input, str):
-                output = checker_options(input)
+                output = find_best_matches(input)
                 return jsonify({"output": output})
             else:
                 return jsonify({"output": None})
     else:
-        response = checker_options(request.form.get("user_input"))
+        response = find_best_matches(request.form.get("user_input"))
         return response
 
 
 @text_bp.route("/search2/<user_input>", methods=["GET", "POST"])
 def check_text2(user_input):
     if user_input:
-        response = checker(user_input)
+        response = find_one_best_match(user_input)
         return response
     return "didnt work"
 
@@ -45,7 +42,7 @@ def check_text3():
 
         output = []
         for item in sentences:
-            output.append(checker(item))
+            output.append(find_one_best_match(item))
 
         return jsonify(output)
 

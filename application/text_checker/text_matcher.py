@@ -51,10 +51,30 @@ def find_best_matches(query):
       "title": relevant_row.title,
       "explanation": relevant_row.explanation,
       "url_checker": relevant_row.url_checker,
-      "score": 1-distance
+      "score": int((1-distance)*100)
     })
 
   return output_list
+
+def find_one_best_match(query):
+  query_embedding = encoder.encode([query])
+  distances = scipy.spatial.distance.cdist(query_embedding, corpus_embeddings, "cosine")[0]
+  results = zip(range(len(distances)), distances)
+  results = sorted(results, key=lambda x: x[1])
+  
+  idx, distance = results[0]
+  relevant_row = corpus_df.iloc[idx]
+
+  return {
+    "fact_checker": relevant_row.fact_checker,
+    "date": relevant_row.date,
+    "location": relevant_row.location,
+    "label": relevant_row.label,
+    "title": relevant_row.title,
+    "explanation": relevant_row.explanation,
+    "url_checker": relevant_row.url_checker,
+    "score": int((1-distance)*100)
+  }
 
 if __name__ == "__main__":
   init_text_matcher()
