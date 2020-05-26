@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM tensorflow/tensorflow:latest
 
 MAINTAINER Maurits De Roover "maurits-deroover@capveriant.com"
 
