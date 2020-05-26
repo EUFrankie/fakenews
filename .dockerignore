@@ -1,0 +1,9 @@
+venv/
+env/
+__pycache__/
+node_modules/
+*.pyc
+.idea/*
+.vscode/*
+chrome_app/*
+data_for_validation/*
