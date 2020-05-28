@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# *- coding: utf-8 -*-
 from application import create_app
 import os
 
