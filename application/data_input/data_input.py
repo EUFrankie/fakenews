@@ -26,6 +26,12 @@ def data():
             flash("Something was wrong with the uploaded file")
             return redirect(url_for("data_in_bp.data"))
 
-        uploaded_data.to_sql()
+        i = 0
+        for index, row in uploaded_data.iterrows():
+            if i > 5:
+                break
+            else:
+                print("index", index, "row", row["date"], "i", i)
+                i += 1
 
     return render_template("data.html", form=form)
