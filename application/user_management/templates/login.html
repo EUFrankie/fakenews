@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %} Login {% endblock %}
+
+{% block main %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+    <div class="content-section ">
+        <form method="post" action = "{{ url_for('user_bp.login') }}">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend class="border-bottom mb-4"><h2 class="mb-2"> Start investing!</h2></legend>
+                <div class="row mb-2">
+                        <div class="col-md-2">{{ form.username.label(class="form-control-label") }}</div>
+                        {% if form.username.errors %}
+                            <div class="col-md-10">
+                                {{ form.username(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.username.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-md-10">{{ form.username(class="form-control form-control-lg") }}</div>
+                        {% endif %}
+                </div>
+                <div class="row mb-2">
+                        <div class="col-md-2">{{ form.password.label(class="form-control-label") }}</div>
+                        {% if form.password.errors %}
+                            <div class="col-md-10">
+                                {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-md-10">{{ form.password(class="form-control form-control-lg") }}</div>
+                        {% endif %}
+                </div>
+                <div class="row mb-2">
+                        <div class="col-md-2">{{ form.remember.label(class="form-control-label") }}</div>
+                        {% if form.remember.errors %}
+                            <div class="col-md-10">
+                                {{ form.remember(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.remember.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="col-md-10">{{ form.remember(class="form-control form-control-sm") }}</div>
+                        {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group border-top mt-1">
+                {{ form.submit(class="btn btn-outline-info mt-4") }}
+            </div>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Not registered yet? <a class="ml-2" href="{{ url_for('user_bp.register') }}">Register</a>
+        </small>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+
