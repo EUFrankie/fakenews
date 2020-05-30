@@ -82,6 +82,7 @@ $( document ).ready(function() {
     console.log(title_id);
     chrome.runtime.sendMessage({open_title_n: title_id}, function(response){
       if (response.success) {
+        console.log(response)
         iframe.style.width="400px";
       }
     });
