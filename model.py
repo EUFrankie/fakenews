@@ -3,6 +3,7 @@ import datetime
 import pytz
 from flask_login import UserMixin
 from sqlalchemy.sql import func
+from sqlalchemy import event
 
 
 # this takes care of all user sessions together with the Usermixin class
@@ -33,10 +34,15 @@ class Claims(db.Model):
     claim_originated_by = db.Column(db.String)
     date_added_to_db = db.Column(db.DATETIME(timezone=True), server_default=func.now())
     added_by = db.Column(db.Integer, db.ForeignKey("basic_user.id"))
-    random_spalte = db.Column(db.String)
+    label_count = db.Column(db.Integer, default=0)
 
     original = db.relationship('Labels', backref='original', lazy=True)
 
+    @event.listens_for(Labels, "after_insert")
+    def label_count_increase(mapper, connection, label):
+        print("this was called")
+        print(label.original_id)
+        label.session.add(Claims)
 
 # the user
 class BasicUser(db.Model, UserMixin):

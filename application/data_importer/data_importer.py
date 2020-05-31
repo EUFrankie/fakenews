@@ -97,7 +97,7 @@ def matching():
     if form.validate_on_submit():
         matches = {}
         for field in form:
-            if field.name != "submit" and field.name != "csrf_token":
+            if field.name != "submit" and field.name != "csrf_token" and field.data != "irrelevant":
                 matches.update({field.name: field.data})
 
         if session.get("location").endswith(".csv"):

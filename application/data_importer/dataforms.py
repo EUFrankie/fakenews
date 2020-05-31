@@ -15,7 +15,7 @@ def create_match_form(match_data, choices):
     class MatchData(FlaskForm):
         submit = SubmitField("confirm")
 
-    choices_reworked = [(0, "irrelevant")]
+    choices_reworked = [("irrelevant", "irrelevant")]
     for item in choices:
         choices_reworked.append((item, item))
 
