@@ -33,6 +33,7 @@ class Claims(db.Model):
     claim_originated_by = db.Column(db.String)
     date_added_to_db = db.Column(db.DATETIME(timezone=True), server_default=func.now())
     added_by = db.Column(db.Integer, db.ForeignKey("basic_user.id"))
+    random_spalte = db.Column(db.String)
 
     original = db.relationship('Labels', backref='original', lazy=True)
 

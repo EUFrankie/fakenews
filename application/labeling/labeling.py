@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 import json
 from model import Labels
 from application import db
@@ -26,8 +26,8 @@ def feedback():
 @label_bp.route("/label")
 @login_required
 def label():
-
-    return "to do"
+    # we get the top 20 lowest labelled items
+    return render_template("labeltool.html")
 
 
 @label_bp.route("/metrics", methods=["GET", "POST"])
