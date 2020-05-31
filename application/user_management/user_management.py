@@ -25,11 +25,12 @@ def login():
         user = BasicUser.query.filter_by(username=form.username.data).first()
         if check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            if session["url"]:
+            try:
                 destination = session["url"]
                 session.pop("url")
-            else:
+            except:
                 destination = 'home_bp.home'
+
             # here we add the dynamic redirect
             return redirect(url_for(destination))
         else:
@@ -42,10 +43,11 @@ def login():
 # I need to figure out first how the redirecting stuff works with the login_required decorator
 @user_bp.route("/register", methods=["GET", "POST"])
 def register():
+    """
     if not current_user.is_authenticated:
         flash("You need to login first")
         return redirect(url_for("user_bp.login", previous="user_bp.register"))
-
+    """
     form = BasicRegistration()
 
     if form.validate_on_submit():

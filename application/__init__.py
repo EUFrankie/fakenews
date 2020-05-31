@@ -31,14 +31,14 @@ def create_app():
         from .homepage.homepage import home_bp
         from .text_checker.text_checker import text_bp
         from .labeling.labeling import label_bp
-        from .data_input.data_input import data_in_bp
+        from .data_importer.data_importer import data_in_bp
 
         # register blueprints
         app.register_blueprint(user_bp)
         app.register_blueprint(home_bp)
         app.register_blueprint(text_bp)
         app.register_blueprint(label_bp)
-        app.register_blueprint(data_in_bp)
+        app.register_blueprint(data_in_bp, url_prefix="/data_importer")
 
         # db.drop_all()
 
