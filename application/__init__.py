@@ -2,9 +2,11 @@ from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
 db = SQLAlchemy()
 login_manager = LoginManager()
+migrate = Migrate()
 
 
 def create_app():
@@ -24,6 +26,7 @@ def create_app():
     # initialize the plugins
     db.init_app(app)
     login_manager.init_app(app)
+    migrate.init_app(app, db)
 
     with app.app_context():
         # include the main routes
@@ -40,9 +43,9 @@ def create_app():
         app.register_blueprint(label_bp)
         app.register_blueprint(data_in_bp, url_prefix="/data_importer")
 
-        db.drop_all()
+        # db.drop_all()
 
         # we create the db once
-        db.create_all()
+        # db.create_all()
 
         return app

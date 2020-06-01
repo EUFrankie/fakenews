@@ -9,6 +9,8 @@ from application import db
 user_bp = Blueprint("user_bp", __name__, template_folder="templates")
 
 
+
+
 @user_bp.route("/login", methods=["GET", "POST"])
 def login():
     # set the correct destination url after login

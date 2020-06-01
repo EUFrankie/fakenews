@@ -6,6 +6,7 @@ from application import db
 from model import Claims
 import json
 import datetime
+from sqlalchemy.types import DateTime
 
 data_in_bp = Blueprint("data_in_bp", __name__,
                        template_folder="templates", static_folder="static")
@@ -35,7 +36,7 @@ def data():
         # we get column names of both uploaded file and db
         file_columns = uploaded_data.columns.values
         db_columns = Claims.__table__.columns.keys()
-        exclude = ["id", "added_by", "date_added_to_db"]
+        exclude = ["id", "added_by", "date_added_to_db", "label_count"]
         for item in exclude:
             db_columns.remove(item)
 
@@ -80,9 +81,12 @@ def add_to_db(datafile, matches):
         # we make sure we can upload the dataframe
         to_upload = pd.DataFrame()
         for item in matches:
-            to_upload[item] = datafile[matches[item]]
+            to_upload[item] = datafile[matches[item]].str.strip()
         to_upload["date_added_to_db"] = datetime.datetime.utcnow()
         to_upload["added_by"] = current_user.id
+
+        # we make sure date columns are in correct format
+        to_upload["date"] = pd.to_datetime(to_upload["date"])
 
         flash("The upload was successful")
         con = db.engine

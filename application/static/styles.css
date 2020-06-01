@@ -77,6 +77,11 @@ th, tr {
     color: #ffffff;
 }
 
+td {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
 .blue {
     color: #1E5880;
 }
