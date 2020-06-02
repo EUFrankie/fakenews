@@ -14,8 +14,11 @@ RUN pip3 install -r requirements.txt
 
 COPY . /app
 
+# Expose port for zero mq
+EXPOSE 5555
+
 EXPOSE 5000
 
-ENTRYPOINT ["python3"]
+#ENTRYPOINT ["python3"]
 
-CMD ["wsgi.py"]
+CMD ["python3", "wsgi.py"]

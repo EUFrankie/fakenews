@@ -3,4 +3,8 @@ env/
 __pycache__/
 node_modules/
 *.pyc
-*.csv
+.idea/*
+.vscode/*
+.trained_models/
+**/temp_files*
+*.db

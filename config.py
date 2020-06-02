@@ -1,4 +1,5 @@
 from tempfile import mkdtemp
+import os
 
 
 class Config:
@@ -12,5 +13,5 @@ class Config:
     UPLOAD_FOLDER = "data_importer/static/temp_files"
 
     # Database Config
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///frankie.db'
+    SQLALCHEMY_DATABASE_URI = os.getenv('DB_ADDRESS', 'sqlite:///frankie.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
