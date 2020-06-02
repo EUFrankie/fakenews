@@ -2,9 +2,7 @@ altair
 astor
 attrs
 backcall
-base58
-bert-serving-client
-bert-serving-server
+base5
 bleach
 blinker
 boto3

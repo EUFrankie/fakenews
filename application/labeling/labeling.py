@@ -35,7 +35,9 @@ def label():
     labels = [0, 1, 0, 1, 0]
 
     for i in range(len(claim_ids)):
-        label = Labels(original_id=claim_ids[i], check_claim=checked_claims[i], feedback_label=labels[i])
+        label = Labels(original_id=claim_ids[i],
+                       check_claim=checked_claims[i],
+                       label=labels[i])
         db.session.add(label)
 
     db.session.commit()
