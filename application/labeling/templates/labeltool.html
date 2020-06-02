@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %} data {% endblock %}
+
+{% block main %}
+<div class="row justify-content-center">
+    <div class="col-md mt-2">
+    <div class="content-section ">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">claim</th>
+                    <th scope="col">label count</th>
+                    <th scope="col">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in claim %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.label_count }}</td>
+                    <td><button type="button" class="btn btn-link">Label</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+{% endblock %}

@@ -8,3 +8,9 @@ class Config:
     SESSION_FILE_DIR = mkdtemp()
     SESSION_PERMANENT = False
     SESSION_TYPE = 'filesystem'
+    SECRET_KEY = 'this_is_our_key'
+    UPLOAD_FOLDER = "data_importer/static/temp_files"
+
+    # Database Config
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///frankie.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False

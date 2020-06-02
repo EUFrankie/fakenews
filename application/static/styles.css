@@ -58,6 +58,13 @@ h1 {
     color: #F25B43;
 }
 
+pre {
+    font-family: 'Roboto', sans-serif;
+    font: 15px/20px Roboto ;
+    letter-spacing: 0px;
+    color: #1E5880;
+}
+
 p1 {
     font-family: 'Roboto', sans-serif;
     font: 20px/25px Roboto ;
@@ -68,6 +75,11 @@ p1 {
 th, tr {
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
+}
+
+td {
+    font-family: 'Roboto', sans-serif;
+    color: black;
 }
 
 .blue {

@@ -1,4 +1,6 @@
 var last_frankie_response = [];
+var searches = [];
+
 
 async function postData(url = '', data = {}) {
   const response = await fetch(url, {
@@ -17,6 +19,7 @@ function ask_frankie(matches) {
   let in_data = {
     "sentences": matches
   };
+  searches = matches;
 
   console.log(JSON.stringify(in_data));
 
@@ -32,7 +35,6 @@ function ask_frankie(matches) {
   .catch(function(err) {
     console.log('post failed! ', err);
   });
-
 }
 
 chrome.runtime.onInstalled.addListener(function() {
@@ -66,7 +68,8 @@ chrome.runtime.onInstalled.addListener(function() {
         if (last_frankie_response.length >= request.open_title_n) {
           console.log("send n");
           chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {       
-              chrome.tabs.sendMessage(tabs[0].id, {match: last_frankie_response[request.open_title_n]});
+              chrome.tabs.sendMessage(tabs[0].id,
+                  {match: last_frankie_response[request.open_title_n], search: searches[request.open_title_n]});
           });
           sendResponse({success: true});
         }

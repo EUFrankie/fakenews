@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %} data {% endblock %}
+
+{% block main %}
+<div class="row justify-content-center">
+    <div class="col-md-6 mt-2">
+    <div class="content-section ">
+        <form method="post" enctype="multipart/form-data" action = "{{ url_for('data_in_bp.data') }}">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend class="border-bottom mb-4"><h2 class="mb-2"> Upload your data!</h2></legend>
+                <div class="row mb-2">
+                    <div class="col-md-2">{{ form.file_name.label(class="form-control-label") }}</div>
+                    <div class="col-md-10">{{ form.file_name(class="form-control form-control-lg") }}</div>
+                </div>
+            </fieldset>
+            <div class="form-group border-top mt-1">
+                {{ form.submit(class="btn btn-outline-info mt-4") }}
+            </div>
+        </form>
+    </div>
+    </div>
+    <div class="col-md-6 mt-2">
+        <pre>
+
+            Our database will accept the following information:
+                The original claim -> required
+                Explanation to why it is false or correct -> required
+                label (false, true, sort of true...) -> required
+                fact_checker
+                url_checker
+                location
+                date of the article
+        </pre>
+    </div>
+</div>
+{% endblock %}
