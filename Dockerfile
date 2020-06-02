@@ -1,12 +1,10 @@
-FROM tensorflow/tensorflow:latest
+FROM ubuntu:latest
 
 MAINTAINER Maurits De Roover "maurits-deroover@capveriant.com"
 
 RUN apt-get update -y &&\
                 apt-get install -y python3 python3-pip python3-dev &&\
                 python3 -m pip install pip --upgrade
-
-RUN apt-get install -y git
 
 COPY ./requirements.txt /app/requirements.txt
 
@@ -16,12 +14,11 @@ RUN pip3 install -r requirements.txt
 
 COPY . /app
 
-# If the trained model is already available locally it should 
-# be copied as well and this file doesn't do anything.
-RUN python3 download_encoder_model.py 
+# Expose port for zero mq
+EXPOSE 5555
 
 EXPOSE 5000
 
-ENTRYPOINT ["python3"]
+#ENTRYPOINT ["python3"]
 
-CMD ["wsgi.py"]
+CMD ["python3", "wsgi.py"]

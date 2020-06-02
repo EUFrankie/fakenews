@@ -1,24 +1,26 @@
 import pandas as pd
-import scipy
+import scipy.spatial
 import numpy as np
-from ast import literal_eval
-from frankie_ai.models.FrankieSentenceEncoder import FrankieSentenceEncoder
-from frankie_ai.datasets.STSBenchmark import STSBenchmarkDatasetForEncoding
+import zmq
+import os
+
+context = zmq.Context()
+
+#  Socket to talk to server
+print("Connecting to frankie ai server…")
+socket = context.socket(zmq.REQ)
+address = os.getenv('SERVER_ADDRESS', '127.0.0.1:5555')
+print("Address: " + address)
+socket.connect("tcp://" + address)
 
 # Init global variables
-encoder = None
 corpus_df = None
 corpus_embeddings = None
 closest_n = 3
 
 def init_text_matcher():
-  global encoder, corpus_df, corpus_embeddings
-  if encoder is None:
-    encoder = FrankieSentenceEncoder(
-      STSBenchmarkDatasetForEncoding,
-      weights_path=".trained_models/frankie_encoder/ec.ckpt"
-    )
-    print("Initialized Encoder")
+  global corpus_df, corpus_embeddings
+
 
   if corpus_df is None or corpus_embeddings is None:
     corpus_df = pd.read_csv('data/fact_check_data_incl_encodings.csv')
@@ -33,9 +35,14 @@ def init_text_matcher():
     print("Embeddings Shape: " + str(corpus_embeddings.shape))
     print("Initialized Corpus of size: " + str(corpus_df.shape[0]))
 
+def _request_embedding(query):
+  request = str.encode(query)
+  socket.send(request)
+  response = socket.recv_json()
+  return response
 
 def find_best_matches(query):
-  query_embedding = encoder.encode([query])
+  query_embedding = _request_embedding(query)
   distances = scipy.spatial.distance.cdist(query_embedding, corpus_embeddings, "cosine")[0]
   results = zip(range(len(distances)), distances)
   results = sorted(results, key=lambda x: x[1])
@@ -57,7 +64,7 @@ def find_best_matches(query):
   return output_list
 
 def find_one_best_match(query):
-  query_embedding = encoder.encode([query])
+  query_embedding = _request_embedding(query)
   distances = scipy.spatial.distance.cdist(query_embedding, corpus_embeddings, "cosine")[0]
   results = zip(range(len(distances)), distances)
   results = sorted(results, key=lambda x: x[1])
