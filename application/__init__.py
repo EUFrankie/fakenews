@@ -44,10 +44,10 @@ def create_app():
         app.register_blueprint(label_bp)
         app.register_blueprint(data_in_bp, url_prefix="/data_importer")
 
-        #db.drop_all()
+        # db.drop_all()
 
         # we create the db once
-        #db.create_all()
+        # db.create_all()
 
         # Init text matcher
         init_text_matcher()

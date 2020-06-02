@@ -7,3 +7,4 @@ node_modules/
 .vscode/*
 .trained_models/
 **/temp_files*
+*.db

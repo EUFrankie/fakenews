@@ -36,7 +36,7 @@ def data():
         # we get column names of both uploaded file and db
         file_columns = uploaded_data.columns.values
         db_columns = Claims.__table__.columns.keys()
-        exclude = ["id", "added_by", "date_added_to_db", "label_count"]
+        exclude = ["id", "added_by", "date_added_to_db", "label_count", "feedback_count"]
         for item in exclude:
             db_columns.remove(item)
 
