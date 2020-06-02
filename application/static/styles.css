@@ -95,6 +95,10 @@ td {
     border-radius: 25px;
 }
 
+.carousel-results tbody tr td {
+    color: white;
+}
+
 .d-block {
     border-radius: 31px;
     height: 300px;
@@ -120,6 +124,7 @@ td {
 .container-fluid {
     border-radius: 31px;
     background-color: #f7f7f7;
+    padding-bottom: 20px;
 }
 
 .links {
