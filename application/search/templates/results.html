@@ -7,7 +7,11 @@
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row search-header mdl-layout--large-screen-only centerize">
-      <span class="mdl-layout__title search-field-title"><img src="{{ url_for('static', filename = 'frankie_new_logo.png') }}" height="50vh"></span>
+      <span class="mdl-layout__title search-field-title">
+        <a href="/"></a>
+          <img src="{{ url_for('static', filename = 'frankie_new_logo.png') }}" height="50vh">
+        </a>
+      </span>
       <form action="/search" method="get">
         <div class="mdl-textfield mdl-js-textfield
                     mdl-textfield--align-right search-field-results">
