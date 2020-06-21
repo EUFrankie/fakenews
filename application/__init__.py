@@ -36,10 +36,12 @@ def create_app():
         from .text_checker.text_checker import text_bp
         from .labeling.labeling import label_bp
         from .data_importer.data_importer import data_in_bp
+        from .search.search import search_bp
 
         # register blueprints
         app.register_blueprint(user_bp)
-        app.register_blueprint(home_bp)
+        #app.register_blueprint(home_bp)
+        app.register_blueprint(search_bp)
         app.register_blueprint(text_bp)
         app.register_blueprint(label_bp)
         app.register_blueprint(data_in_bp, url_prefix="/data_importer")
