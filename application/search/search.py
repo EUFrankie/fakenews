@@ -17,8 +17,7 @@ def search_results():
 
   form = SearchQueryForm(request.args, meta={'csrf': False})
   if form.validate():
-    #matches = find_matches_with_score_higher_than(score_threshold, form.data['query'])
-    matches = find_random_matches()
+    matches = find_matches_with_score_higher_than(score_threshold, form.data['query'])
   else:
     return redirect(url_for('search_bp.search_home'))
   # add source url
