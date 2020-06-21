@@ -67,6 +67,20 @@
     <div class="mdl-layout-spacer"></div>
   </div>
   {% endfor %}
+  {% if matches|length == 0 %}
+    <div class="mdl-grid">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-cell mdl-cell--10-col" text-align="center">
+        <p>We could not find any fact-checks similar to you claim.
+          Note that at the moment we focus only on COVID-19 related fact-checks.
+          Please <a href="https://www.frankie-ai.com" target="_blank">contact us</a> if you have a fact-checking source,
+          which you want us to compare claims against as well.
+        </p>
+      </div>
+      <div class="mdl-layout-spacer"></div>
+    </div>
+  {% endif %}
+
   </main>
 </div>
 

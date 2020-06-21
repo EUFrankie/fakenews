@@ -5,37 +5,41 @@
 {% block main %}
 
 <div class="mdl-layout mdl-js-layout">
-<!--    <header class="mdl-layout__header">-->
-<!--&lt;!&ndash;        TODO &ndash;&gt;-->
-<!--    </header>-->
-    <div class="search-form">
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col" align="center">
-                <img src="{{ url_for('static', filename = 'frankie_new_logo.png') }}" height="130vh">
-            </div>
-        </div>
-        <form method="GET" action="/search">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col" align="center">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label search-textfield">
-                        {{ form.query(class_="mdl-textfield__input") }}
-                        {{ form.query.label(class_="mdl-textfield__label") }}
-                        {#
-                        <input class="mdl-textfield__input" type="text" id="query" name="query" required="" value="">
-                        <label class="mdl-textfield__label" for="query">Insert Claim</label> #}
-                    </div>
-                </div>
-            </div>
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col" align="center">
-                    <!-- Accent-colored raised button with ripple -->
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
-                      Search
-                    </button>
-                </div>
-            </div>
-        </form>
+  <div class="mdl-layout--fixed-header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <div class="mdl-layout-spacer"></div>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="https://frankie-ai.com"><i class="material-icons home-icon">home</i></a>
+      </nav>
     </div>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="search-form">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col" align="center">
+          <img src="{{ url_for('static', filename = 'frankie_new_logo.png') }}" height="130vh">
+        </div>
+      </div>
+      <form method="GET" action="/search">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col" align="center">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label search-textfield">
+              {{ form.query(class_="mdl-textfield__input") }}
+              {{ form.query.label(class_="mdl-textfield__label") }}
+            </div>
+          </div>
+        </div>
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col" align="center">
+            <!-- Accent-colored raised button with ripple -->
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
 </div>
 
 {% endblock %}
