@@ -4,7 +4,7 @@ import re
 from application.search.search_form import SearchQueryForm
 
 search_bp = Blueprint("search_bp", __name__, template_folder="templates", static_folder="static")
-score_threshold = 69
+score_threshold = 65
 
 @search_bp.route('/')
 def search_home():
@@ -18,6 +18,17 @@ def search_results():
   form = SearchQueryForm(request.args, meta={'csrf': False})
   if form.validate():
     matches = find_matches_with_score_higher_than(score_threshold, form.data['query'])
+
+    if "COVID-19" in form.data['query'] and "corona virus" not in form.data['query']:
+      # Rerun with corona virus
+      query = form.data['query'].replace("COVID-19", "corona virus")
+      matches += find_matches_with_score_higher_than(score_threshold, query)
+    elif "corona virus" in form.data['query'] and "COVID-19" not in form.data['query']:
+      query = form.data['query'].replace("corona virus", "COVID-19")
+      matches += find_matches_with_score_higher_than(score_threshold, query)
+
+    matches.sort(key=lambda x: x['score'], reverse=True)
+    matches = matches[0:15]
   else:
     return redirect(url_for('search_bp.search_home'))
   # add source url

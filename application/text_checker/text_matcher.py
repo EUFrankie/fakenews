@@ -97,7 +97,7 @@ def find_matches_with_score_higher_than(score, query):
         "title": relevant_row.title,
         "explanation": relevant_row.explanation,
         "url_checker": relevant_row.url_checker,
-        "score": score
+        "score": calculated_score
       })
     else:
       # Since the results are sorted based on the score we can break as soon as one score is lower than
