@@ -17,7 +17,7 @@ async function postData(url = '', data = {}) {
 
 function ask_frankie(matches) {
   let in_data = {
-    "sentences": matches
+    "queries": matches
   };
   searches = matches;
 
@@ -25,7 +25,7 @@ function ask_frankie(matches) {
 
   let url_ = 'http://search.frankie-ai.com'
   // let url_ = 'http://127.0.0.1:5000'
-  postData(url_ + '/search_json', in_data)
+  postData(url_ + '/best_match', in_data)
   .then((data) => {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {frankie_response: data});

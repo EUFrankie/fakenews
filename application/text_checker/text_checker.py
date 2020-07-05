@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from application.text_checker.text_matcher import best_matches, one_best_match
+from application.text_checker.text_matcher import best_matches, one_best_match, list_matches
 import json
 
 text_bp = Blueprint("text_bp", __name__, template_folder="templates")
@@ -35,16 +35,36 @@ def check_text2(user_input):
   return "didnt work"
 
 
-@text_bp.route("/search_json", methods=["GET", "POST"])
+@text_bp.route("/best_match", methods=["GET", "POST"])
 def check_text3():
   if request.get_json():
     input = request.get_json()
-    sentences = input["sentences"]
+    if "queries" not in input:
+      return jsonify({"error": "The request must contain the field 'queries'."})
+
+    if not isinstance(input['queries'], list):
+      return jsonify({"error": "Queries must be a list."})
+
+    queries = input["queries"]
 
     output = []
-    for item in sentences:
+    for item in queries:
       output.append(one_best_match(item))
 
     return jsonify(output)
+  else:
+    return jsonify({"error": "The request must contain a json body and Content-Type application/json must be set."})
 
-  return "didnt work"
+@text_bp.route("/list_matching", methods=["POST"])
+def list_matching_view():
+  if request.get_json():
+    if "queries" in request.json and "corpus" in request.json:
+      if not isinstance(request.json['queries'], list):
+        return jsonify({"error": "Queries must be a list."})
+      if not isinstance(request.json['corpus'], list):
+        return jsonify({"error": "Corpus must be a list."})
+      return jsonify(list_matches(request.json['queries'], request.json['corpus']))
+    else:
+      return jsonify({"error": "The request must contain the fields 'queries' and 'corpus'."})
+  else:
+    return jsonify({"error": "The request must contain a json body and Content-Type application/json must be set."})

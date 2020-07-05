@@ -48,8 +48,9 @@ class TestTextMatcher(unittest.TestCase):
     self.assertTrue(matches is not None)
     for idx in range(len(matches)):
       match = matches[idx]
-      self.assertEqual(match[0], corpus_list[idx])
-      self.assertGreaterEqual(match[1], 99)
+      self.assertEqual(match["sentence"], corpus_list[idx])
+      self.assertGreaterEqual(match["score"], 99)
+      self.assertGreaterEqual(match["corpus_index"], idx)
 
 
 if __name__ == '__main__':

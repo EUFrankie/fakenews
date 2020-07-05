@@ -109,7 +109,11 @@ def list_matches(query_list, corpus_list):
     distances = distances_all[query_idx]
     results = _prepare_results(distances)
     idx, distance = results[0]
-    match_list.append([corpus_list[idx], _distance_to_score(distance)])
+    match_list.append({
+      "sentence": corpus_list[idx],
+      "corpus_index": idx,
+      "score": _distance_to_score(distance)
+    })
 
   return match_list
 
