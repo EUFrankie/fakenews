@@ -55,14 +55,30 @@ def check_text3():
   else:
     return jsonify({"error": "The request must contain a json body and Content-Type application/json must be set."})
 
+
+def validate_list(list_name, list_object):
+  if not isinstance(list_object, list):
+    return jsonify({"error": list_name + " must be a list."})
+
+  for obj in list_object:
+    if not isinstance(obj, str):
+      return jsonify({"error": list_name + " contains non-string elements."})
+
+  return None
+
 @text_bp.route("/list_matching", methods=["POST"])
 def list_matching_view():
   if request.get_json():
     if "queries" in request.json and "corpus" in request.json:
-      if not isinstance(request.json['queries'], list):
-        return jsonify({"error": "Queries must be a list."})
-      if not isinstance(request.json['corpus'], list):
-        return jsonify({"error": "Corpus must be a list."})
+
+      error_response = validate_list("Corpus", request.json['corpus'])
+      if error_response:
+        return error_response
+
+      error_response = validate_list("Queries", request.json['queries'])
+      if error_response:
+        return error_response
+
       return jsonify(list_matches(request.json['queries'], request.json['corpus']))
     else:
       return jsonify({"error": "The request must contain the fields 'queries' and 'corpus'."})
