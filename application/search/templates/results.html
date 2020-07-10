@@ -1,0 +1,87 @@
+{% extends "layout_search.html" %}
+
+{% block title %} Search {% endblock %}
+
+{% block main %}
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row search-header mdl-layout--large-screen-only centerize">
+      <span class="mdl-layout__title search-field-title">
+        <a href="/">
+          <img src="{{ url_for('static', filename = 'frankie_new_logo.png') }}" height="50vh">
+        </a>
+      </span>
+      <form action="/search" method="get">
+        <div class="mdl-textfield mdl-js-textfield
+                    mdl-textfield--align-right search-field-results">
+          {{ form.query(class_="mdl-textfield__input") }}
+          {{ form.query.label(class_="mdl-textfield__label") }}
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent header-search-btn">
+            <i class="material-icons">search</i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="mdl-grid mdl-layout--small-screen-only mobile-logo-header">
+      <span class="mdl-layout__title search-field-title">
+        <a href="/">
+          <img src="{{ url_for('static', filename = 'frankie_new_logo.png') }}" height="50vh">
+        </a>
+      </span>
+    </div>
+    <form action="/search" method="get">
+    <div class="mdl-grid mdl-layout--small-screen-only mobile-search-header centerize">
+      <div class="">
+        <div class="mdl-textfield mdl-js-textfield">
+          {{ form.query(class_="mdl-textfield__input") }}
+          {{ form.query.label(class_="mdl-textfield__label") }}
+        </div>
+      </div>
+      <div class="search-btn-cont">
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--accent header-search-btn">
+          <i class="material-icons">search</i>
+        </button>
+      </div>
+    </div>
+    </form>
+
+  </header>
+  <main class="mdl-layout__content">
+  {% for match in matches %}
+  <div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell mdl-cell--10-col centerize">
+        <div class="mdl-card mdl-shadow--2dp card-wide">
+          <div class="mdl-card__title">
+            <h1 class="mdl-card__title-text">{{ match.title|truncate(200) }}</h1>
+          </div>
+          <div class="mdl-card__supporting-text">
+            {{ match.explanation }}
+          </div>
+          <div class="mdl-card__supporting-text">
+            <a target="_blank"  rel="noopener noreferrer"href="{{ match.url }}">Source: IFCN</a>
+          </div>
+        </div>
+    </div>
+    <div class="mdl-layout-spacer"></div>
+  </div>
+  {% endfor %}
+  {% if matches|length == 0 %}
+    <div class="mdl-grid">
+      <div class="mdl-layout-spacer"></div>
+      <div class="mdl-cell mdl-cell--10-col" text-align="center">
+        <p>We could not find any fact-checks similar to you claim.
+          Note that at the moment we focus only on COVID-19 related fact-checks.
+          Please <a href="https://www.frankie-ai.com" target="_blank">contact us</a> if you have a fact-checking source,
+          which you want us to compare claims against as well.
+        </p>
+      </div>
+      <div class="mdl-layout-spacer"></div>
+    </div>
+  {% endif %}
+
+  </main>
+</div>
+
+{% endblock %}

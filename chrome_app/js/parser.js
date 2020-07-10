@@ -106,6 +106,7 @@ $( document ).ready(function() {
       console.log("Error frankie response =! matches length");
       return;
     }
+    let rendered_matches = 0;
     for (let i = 0; i < matches.length; i++) {
       const match = matches[i];
       const repl = frankie_response[i];
@@ -122,9 +123,11 @@ $( document ).ready(function() {
           </button>  
         </span>
         `);
+        rendered_matches++;
       }
     }
     $(".news_trigger").on("click", openFrankie);
+    chrome.runtime.sendMessage({rendered_matches: rendered_matches});
   }
 
   let matches = [];

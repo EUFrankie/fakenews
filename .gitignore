@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+<<<<<<< HEAD
 *.py[cod]
 *$py.class
 
@@ -50,6 +51,8 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+
+frankie.db
 
 # Translations
 *.mo
@@ -137,3 +140,12 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+=======
+node_modules/
+*.pyc
+.idea/*
+.vscode/*
+.trained_models/
+**/temp_files*
+*.db
+>>>>>>> 839026c0819aebb4d31330d000de5124ca7b5ff0

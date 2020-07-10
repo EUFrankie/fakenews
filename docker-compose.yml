@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  # Only run encoder/frankie_server to serve encodings for web app development
+  encoder:
+    image: jakl5749/frankie_server:latest
+    container_name: frankie_server
+    ports:
+      - "5555:5555"
