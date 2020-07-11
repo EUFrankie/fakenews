@@ -72,6 +72,9 @@ instance/
 # Scrapy stuff:
 .scrapy
 
+# ignore my random directory
+random/
+
 # Sphinx documentation
 docs/_build/
 

@@ -4,6 +4,7 @@ from model import Labels, Claims
 from application import db
 from flask_login import login_required, current_user
 from sqlalchemy import desc, asc
+import requests
 
 label_bp = Blueprint("label_bp", __name__, template_folder="templates")
 
@@ -53,3 +54,20 @@ def metrics():
     # this is not a priority
     return "to do"
 
+
+def get_claims():
+    API_key = "AIzaSyCrvjCI5k6XGP9tn9sos29PTNgOFnt7_G4"
+
+    url = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
+
+    param = {
+        "query": "testing",
+        "key": API_key,
+        "languageCode": "en",
+        "pageSize": 20,
+        "reviewPublisherSiteFilter": None
+    }
+
+    results = requests.get(url=url, params=param)
+
+    return results

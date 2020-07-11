@@ -4,6 +4,7 @@ import json
 
 text_bp = Blueprint("text_bp", __name__, template_folder="templates")
 
+
 @text_bp.route("/search1", methods=["GET", "POST"])
 def check_text():
     if not request.form.get("user_input"):
