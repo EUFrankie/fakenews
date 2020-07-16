@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, request
-from application.text_checker.text_matcher import find_matches_with_score_higher_than, find_random_matches
+from application.text_checker.text_matcher import matches_with_score_higher_than, random_matches
 import re
 from application.search.search_form import SearchQueryForm
 
@@ -17,15 +17,15 @@ def search_results():
 
   form = SearchQueryForm(request.args, meta={'csrf': False})
   if form.validate():
-    matches = find_matches_with_score_higher_than(score_threshold, form.data['query'])
+    matches = matches_with_score_higher_than(score_threshold, form.data['query'])
 
     if "COVID-19" in form.data['query'] and "corona virus" not in form.data['query']:
       # Rerun with corona virus
       query = form.data['query'].replace("COVID-19", "corona virus")
-      matches += find_matches_with_score_higher_than(score_threshold, query)
+      matches += matches_with_score_higher_than(score_threshold, query)
     elif "corona virus" in form.data['query'] and "COVID-19" not in form.data['query']:
       query = form.data['query'].replace("corona virus", "COVID-19")
-      matches += find_matches_with_score_higher_than(score_threshold, query)
+      matches += matches_with_score_higher_than(score_threshold, query)
 
     matches.sort(key=lambda x: x['score'], reverse=True)
     matches = matches[0:15]

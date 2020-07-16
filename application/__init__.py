@@ -1,6 +1,7 @@
 from flask import Flask
 from config import Config
 from application.text_checker.text_matcher import init_text_matcher
+from application.text_checker.frankie_server_interface import FrankieZmqServer
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
@@ -52,6 +53,6 @@ def create_app():
         # db.create_all()
 
         # Init text matcher
-        init_text_matcher()
+        init_text_matcher(FrankieZmqServer())
 
         return app

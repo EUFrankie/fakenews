@@ -1,6 +1,5 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-<<<<<<< HEAD
 *.py[cod]
 *$py.class
 
@@ -143,7 +142,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-=======
+
 node_modules/
 *.pyc
 .idea/*
@@ -151,4 +150,4 @@ node_modules/
 .trained_models/
 **/temp_files*
 *.db
->>>>>>> 839026c0819aebb4d31330d000de5124ca7b5ff0
+.ipynb_checkpoints/
