@@ -56,6 +56,10 @@ def metrics():
 
 
 def get_claims():
+    """
+    https://developers.google.com/fact-check/tools/api/reference/rest/v1alpha1/claims/search
+    """
+
     API_key = "AIzaSyCrvjCI5k6XGP9tn9sos29PTNgOFnt7_G4"
 
     url = "https://factchecktools.googleapis.com/v1alpha1/claims:search"
@@ -69,5 +73,26 @@ def get_claims():
     }
 
     results = requests.get(url=url, params=param)
+
+    return results
+
+
+def get_google_searches(search: str):
+    """
+    https://developers.google.com/custom-search/v1/using_rest
+    """
+
+    API_key = "AIzaSyCrvjCI5k6XGP9tn9sos29PTNgOFnt7_G4"
+    url = "https://www.googleapis.com/customsearch/v1"
+    google = "005366740491259083467:rbgacuprvi7"
+    search = search
+
+    param = {
+        "q": search,
+        "key": API_key,
+        "cx": google
+    }
+
+    results = request.get(url=url, params=param)
 
     return results
