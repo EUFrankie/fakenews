@@ -84,3 +84,22 @@ def list_matching_view():
       return jsonify({"error": "The request must contain the fields 'queries' and 'corpus'."})
   else:
     return jsonify({"error": "The request must contain a json body and Content-Type application/json must be set."})
+
+@text_bp.route("/multi_matches", methods=["POST"])
+def multi_match_view():
+  if request.get_json():
+    if "queries" in request.json and "number_of_matches" in request.json:
+      error_response = validate_list("Queries", request.json['queries'])
+      if error_response:
+        return error_response
+
+      output = []
+      for item in request.json['queries']:
+        output.append(best_matches(item, int(request.json['number_of_matches'])))
+
+      return jsonify(output)
+
+    else:
+      return jsonify({"error": "The request must contain the fields 'queries' and 'number_of_matches'."})
+  else:
+    return jsonify({"error": "The request must contain a json body and Content-Type application/json must be set."})

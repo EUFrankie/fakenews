@@ -54,12 +54,14 @@ def _prepare_results(distances):
 def _distance_to_score(distance):
   return int((1 - distance) * 100)
 
-def best_matches(query):
+def best_matches(query, number_of_matches = None):
+  if number_of_matches == None:
+    number_of_matches = closest_n
   query_embedding = frankie_server.request_embedding(query)
   distances = scipy.spatial.distance.cdist(query_embedding, corpus_embeddings, "cosine")[0]
   results = _prepare_results(distances)
 
-  return _create_output_list(results, closest_n)
+  return _create_output_list(results, number_of_matches)
 
 def random_matches():
   n = 10
