@@ -5,7 +5,7 @@ Flask-Migrate==2.5.3
 Flask-WTF==0.14.3
 fuzzywuzzy==0.18.0
 jupyter==1.0.0
-notebook==6.0.3
+notebook==6.4.1
 numpy==1.18.4
 pandas==1.0.4
 pandas-ods-reader==0.0.7
